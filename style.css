@@ -349,7 +349,9 @@ a {
 
 /* ----- Responsive Layout ----- */
 @media (max-width: 768px) {
-
+.navContainer, .Container, .built-section{
+  width: 90%;
+}
   .hero > .row {
     display: flex;
     flex-direction: column;
@@ -383,5 +385,7 @@ a {
 
   .footer-bottom {
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
 }
