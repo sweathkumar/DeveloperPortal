@@ -183,6 +183,7 @@ a {
 
 .col {
   height: 100%;
+  width: 100%;
 }
 
 .col-60{
@@ -194,8 +195,151 @@ a {
 }
 
 /* ------------------------------------------------------
-   BUILT BY ONE SECTION
+   NEW CARD STYLE - ONLY visual improvements for all cards
    ------------------------------------------------------ */
+.built-card,
+.stat-card,
+.skill-item,
+.topic-tag,
+.about-card {
+  background-color: #ffffff;
+  border: 1px solid #e8ecef;           /* Softer border */
+  border-radius: 14px;                 /* New rounded corners */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s ease;
+}
+
+/* Unified hover effect for all cards */
+.built-card:hover,
+.stat-card:hover,
+.skill-item:hover,
+.topic-tag:hover,
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 136, 255, 0.1);
+  border-color: #bcdfff;
+}
+
+/* Subheading (card titles) - expanding underline on hover */
+.built-card .subheading,
+.stat-card .subheading,
+.skill-item .subheading,
+.topic-tag .subheading,
+.about-card .subheading {
+  position: relative;
+  padding-bottom: 12px;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+}
+
+.built-card .subheading::after,
+.stat-card .subheading::after,
+.skill-item .subheading::after,
+.about-card .subheading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 56px;
+  height: 4px;
+  background-color: #0088ff;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.built-card:hover .subheading::after,
+.stat-card:hover .subheading::after,
+.skill-item:hover .subheading::after,
+.about-card:hover .subheading::after {
+  width: 96px;
+}
+
+.built-card:hover .subheading,
+.stat-card:hover .subheading,
+.skill-item:hover .subheading,
+.about-card:hover .subheading {
+  color: #0066cc;
+}
+
+/* Accent cards (DSA & Closing Note) */
+.about-card.dsa-accent,
+.about-card.closing-note {
+  background-color: #f6faff;
+  border-left: 6px solid #0088ff;
+}
+
+/* ------------------------------------------------------
+   ALL ORIGINAL SECTION STYLES - NO CHANGES TO STRUCTURE
+   ------------------------------------------------------ */
+.stats-section {
+  margin-top: 100px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 40px 20px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.stat-number {
+  font-family: var(--font-family);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--heading-color);
+  line-height: 1;
+  position: relative;
+}
+
+.stat-number::after {
+  content: '';
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--link-color);
+  margin-left: 4px;
+}
+
+.stat-number[data-target$="+%"]::after,
+.stat-number[data-target*="+" ]::after {
+  content: '+';
+}
+
+.stat-number[data-target="98.3%"]::after {
+  content: '%';
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--subdescription-color);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-number {
+    font-size: 42px;
+  }
+  
+  .stat-number::after {
+    font-size: 42px;
+  }
+}
+
 .built-section {
   width: 70%;
   margin-top: 80px;
@@ -218,27 +362,8 @@ a {
 }
 
 .built-card {
-  border: 1px solid #e6e6e6;
-  border-radius: 0px;
-  background-color: #ffffff;
   padding: 0px 15px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.02);
   margin: -1px 0 0 -1px;
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.built-card:hover {
-  transform: translateY(0px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.05);
-}
-
-.built-card h3 {
-  margin-bottom: 10px;
-}
-
-.built-card p {
-  line-height: 1.6;
 }
 
 .built-card.wide {
@@ -247,11 +372,184 @@ a {
 
 @media (max-width: 600px) {
   .built-grid {
-    grid-template-columns: 1fr; /* 1 column on small screens */
+    grid-template-columns: 1fr;
   }
   
   .built-card.wide {
-    grid-column: 1 / -1; /* Ensures wide card spans full width */
+    grid-column: 1 / -1;
+  }
+}
+
+.skills-section {
+  margin-top: 100px;
+}
+
+.skill-group-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding: 20px 15px;
+}
+
+.inner-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.skill-item {
+  position: relative;
+  background-color: #f9f9f9;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.dsa-section {
+  margin-top: 100px;
+}
+
+.dsa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));
+  width: 100%;
+  column-gap: 0 !important;
+}
+
+.dsa-main-card {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.dsa-total-number {
+  font-family: var(--font-family);
+  font-size: 64px;
+  font-weight: 600;
+  color: var(--heading-color);
+  line-height: 1;
+}
+
+.pulse-effect {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.dsa-difficulty {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 320px;
+}
+
+.difficulty-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.difficulty-label {
+  width: 70px;
+  text-align: left;
+  color: #595959;
+}
+
+.difficulty-bar {
+  flex: 1;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #e6e6e6;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.difficulty-bar span {
+  position: relative;
+  z-index: 1;
+}
+
+.difficulty-bar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: width 1.2s ease;
+  border-radius: 8px;
+}
+
+.dsa-main-card:hover .difficulty-bar::before {
+  width: 100%;
+}
+
+.difficulty-bar.easy::before { background-color: #4caf50; }
+.difficulty-bar.medium::before { background-color: #ff9800; }
+.difficulty-bar.hard::before { background-color: #f44336; }
+
+.dsa-topics-card {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.topics-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.topic-tag {
+  background-color: #f5f8ff;
+  color: var(--link-color);
+  border: 1px solid #d0e0ff;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (min-width: 900px) {
+  .dsa-topics-card.wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .dsa-total-number {
+    font-size: 52px;
+  }
+  
+  .dsa-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dsa-topics-card.wide {
+    grid-column: 1 / -1;
   }
 }
 
@@ -387,5 +685,59 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* About section - only card style updated */
+.about-section {
+  margin-top: 100px;
+}
+
+.about-row {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+.about-card {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-card.dsa-accent {
+  padding-left: 44px;
+}
+
+.about-card.closing-note {
+  text-align: center;
+  padding: 64px 36px;
+  margin-top: 20px;
+}
+
+/* Responsive unchanged */
+@media (max-width: 900px) {
+  .about-card {
+    padding: 36px 32px;
+  }
+  
+  .about-card.closing-note {
+    padding: 56px 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-card {
+    padding: 32px 24px;
+  }
+  
+  .about-card.dsa-accent {
+    padding-left: 36px;
+  }
+  
+  .about-card.closing-note {
+    padding: 48px 24px;
   }
 }
