@@ -1,391 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sweathkumar</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./Resources/Images/ico/favicon-light.svg" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="./Resources/Images/ico/favicon-dark.svg" media="(prefers-color-scheme: light)">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweathkumar — Software Development Engineer</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
-
 <body>
-    <nav class="navbar ">
-        <div class="navContainer">
-            <img src="./Resources/Images/Group 16.svg" alt="logo">
-            <ul class="navlist">
-                <li><a href="#" class="navlist-text">Summary</a></li>
-                <li><a href="./library.html" class="navlist-text">Library</a></li>
-                <li><a href="./contact.html" class="navlist-text">Contact</a></li>
-                <li><a href="./aboutme.html" target="_self" class="navlist-text">About</a></li>
-            </ul>
-            <a href="https://www.instagram.com/Sweathkumar.g/"><img src="./Resources/Images/Vector.svg"
-                    alt="instagram"></a>
-        </div>
-    </nav>
 
-    <section class="built-section Container hero" style="margin: 45px 0 0 0;">
-        <div class="row" style="margin: 10% 0%;">
-            <div class="col col-60" style="display: flex; align-items: center;">
-                <div
-                    style="gap: 10px; display: flex; flex-direction: column; align-items: start; justify-content: space-between;">
-                    <label for="" class="heading">Software Development Engineer</label>
-                    <label for="" class="subdescription">Designs and builds reliable, scalable software that drives
-                        business growth and innovation. They turn ideas into efficient, high-quality digital solutions —
-                        solving complex problems and enabling smarter, faster operations.</label>
-                    <a href="#"><label for="" class="link-text">learn more</label><img style="margin: 0 5px;"
-                            src="./Resources/Images/VectorArrow.svg" alt="Arrow"></a>
-                </div>
-            </div>
-            <div class="col col-40" style="display: flex; align-items: center;">
-                <img src="./Resources/Images/Group 19.svg" alt="Code template">
-            </div>
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Sweathkumar<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="library.html">Library</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="aboutme.html">About</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- ── HERO ──────────────────────────────────────── -->
+    <section class="hero container">
+      <div class="hero-content">
+        <div class="hero-badge">Open to Opportunities</div>
+
+        <h1 class="hero-title">
+          <span class="line"><span class="line-in">Crafting</span></span>
+          <span class="line"><span class="line-in gradient-text">Reliable</span></span>
+          <span class="line"><span class="line-in">Software.</span></span>
+        </h1>
+
+        <p class="hero-desc">
+          Software Development Engineer building production-grade systems across
+          .NET, mobile, and full-stack platforms. I turn complex requirements
+          into clean, scalable code that ships and lasts.
+        </p>
+
+        <div class="hero-actions">
+          <a href="library.html" class="btn btn-primary">View Projects</a>
+          <a href="aboutme.html" class="btn btn-ghost">About Me</a>
         </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="code-card">
+          <div class="code-bar">
+            <span class="code-dot code-dot-r"></span>
+            <span class="code-dot code-dot-y"></span>
+            <span class="code-dot code-dot-g"></span>
+            <span class="code-fname">sweathkumar.cs</span>
+          </div>
+          <div class="code-body">
+            <span class="cl"><span class="cc">// Software Development Engineer</span></span>
+            <span class="cl"><span class="ck">public class</span> <span class="cf">Sweathkumar</span> {</span>
+            <span class="cl">&nbsp;&nbsp;<span class="ck">string</span> Role = <span class="cs">"SDE @ CMOTS Infotech"</span>;</span>
+            <span class="cl">&nbsp;&nbsp;<span class="ck">string</span> Location = <span class="cs">"Chennai, India"</span>;</span>
+            <span class="cl">&nbsp;&nbsp;<span class="ck">string[]</span> Stack = {</span>
+            <span class="cl">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">".NET"</span>, <span class="cs">"MAUI"</span>, <span class="cs">"Angular"</span>,</span>
+            <span class="cl">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">"Web API"</span>, <span class="cs">"Xamarin"</span></span>
+            <span class="cl">&nbsp;&nbsp;};</span>
+            <span class="cl">&nbsp;&nbsp;<span class="cn">133</span> Features <span class="cf">Delivered</span>();</span>
+            <span class="cl">&nbsp;&nbsp;<span class="ck">bool</span> Available = <span class="cf">true</span>;<span class="cursor-blink">█</span></span>
+            <span class="cl">}</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="built-section stats-section">
-        <h2 class="heading built-title">Achievements At A Glance</h2>
+    <!-- ── STATS ───────────────────────────────────────── -->
+    <section style="padding-top: 0;" id="stats">
+      <div class="sec-label reveal">Achievements</div>
+      <h2 class="sec-title reveal rd1">Metrics <em>That Matter</em></h2>
 
-        <div class="built-grid stats-grid">
-            <div class="built-card stat-card">
-                <div class="stat-number" data-target="230">0</div>
-                <p class="subdescription stat-label">Tasks Completed</p>
-            </div>
-
-            <div class="built-card stat-card">
-                <div class="stat-number" data-target="98.3">0</div>
-                <p class="subdescription stat-label">Completion Rate</p>
-            </div>
-
-            <div class="built-card stat-card">
-                <div class="stat-number" data-target="15">0</div>
-                <p class="subdescription stat-label">Projects Worked On</p>
-            </div>
-
-            <div class="built-card stat-card">
-                <div class="stat-number" data-target="133">0</div>
-                <p class="subdescription stat-label">Production Features Delivered</p>
-            </div>
+      <div class="stats-strip">
+        <div class="stat-item reveal rd1">
+          <div class="stat-n" data-target="230">0</div>
+          <div class="stat-lbl">Tasks Completed</div>
         </div>
+        <div class="stat-item reveal rd2">
+          <div class="stat-n" data-target="98.3" data-suffix="%">0</div>
+          <div class="stat-lbl">Completion Rate</div>
+        </div>
+        <div class="stat-item reveal rd3">
+          <div class="stat-n" data-target="15">0</div>
+          <div class="stat-lbl">Projects Shipped</div>
+        </div>
+        <div class="stat-item reveal rd4">
+          <div class="stat-n" data-target="133">0</div>
+          <div class="stat-lbl">Features Delivered</div>
+        </div>
+      </div>
     </section>
 
-    <section class="built-section skills-section">
-        <h2 class="heading built-title">Skills & Proficiency</h2>
+    <!-- ── SKILLS ──────────────────────────────────────── -->
+    <section id="skills">
+      <div class="sec-label reveal">Proficiency</div>
+      <h2 class="sec-title reveal rd1">Skills & <em>Arsenal</em></h2>
 
-        <div class="built-grid">
-            <!-- Frontend -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Frontend</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="50">
-                        <div class="skill-info">
-                            <span class="skill-name">Angular</span>
-                            <span class="skill-percent">50%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="30">
-                        <div class="skill-info">
-                            <span class="skill-name">React</span>
-                            <span class="skill-percent">30%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="70">
-                        <div class="skill-info">
-                            <span class="skill-name">HTML / CSS / TypeScript</span>
-                            <span class="skill-percent">70%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
+      <div class="skills-grid">
 
-            <!-- Backend / Web -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Backend / Web</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="90">
-                        <div class="skill-info">
-                            <span class="skill-name">.NET (C#)</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="75">
-                        <div class="skill-info">
-                            <span class="skill-name">ASP.NET Web App</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="80">
-                        <div class="skill-info">
-                            <span class="skill-name">Web API</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Mobile</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="90">
-                        <div class="skill-info">
-                            <span class="skill-name">Xamarin.Forms</span>
-                            <span class="skill-percent">90%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="88">
-                        <div class="skill-info">
-                            <span class="skill-name">.NET MAUI</span>
-                            <span class="skill-percent">88%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="75">
-                        <div class="skill-info">
-                            <span class="skill-name">Android & iOS</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desktop -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Desktop</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="70">
-                        <div class="skill-info">
-                            <span class="skill-name">WPF</span>
-                            <span class="skill-percent">70%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Architecture -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Architecture</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="80">
-                        <div class="skill-info">
-                            <span class="skill-name">MVVM</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tools -->
-            <div class="built-card skill-group-card">
-                <h3 class="subheading">Tools</h3>
-                <div class="inner-skills-grid">
-                    <div class="skill-item" data-percent="75">
-                        <div class="skill-info">
-                            <span class="skill-name">Git</span>
-                            <span class="skill-percent">75%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                    <div class="skill-item" data-percent="80">
-                        <div class="skill-info">
-                            <span class="skill-name">Visual Studio / VS Code</span>
-                            <span class="skill-percent">80%</span>
-                        </div>
-                        <div class="skill-bar"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="skill-card reveal rd1">
+          <div class="skill-cat">Frontend</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Angular</span><span class="skill-pct">50%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="50"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">React</span><span class="skill-pct">30%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="30"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">HTML / CSS / TypeScript</span><span class="skill-pct">70%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
+          </div>
         </div>
+
+        <div class="skill-card reveal rd2">
+          <div class="skill-cat">Backend / Web</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">.NET (C#)</span><span class="skill-pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">ASP.NET Web App</span><span class="skill-pct">75%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Web API</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal rd3">
+          <div class="skill-cat">Mobile</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Xamarin.Forms</span><span class="skill-pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">.NET MAUI</span><span class="skill-pct">88%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Android & iOS</span><span class="skill-pct">75%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal rd1">
+          <div class="skill-cat">Desktop</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">WPF</span><span class="skill-pct">70%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal rd2">
+          <div class="skill-cat">Architecture</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">MVVM</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+        </div>
+
+        <div class="skill-card reveal rd3">
+          <div class="skill-cat">Tools</div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Git</span><span class="skill-pct">75%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-meta"><span class="skill-name">Visual Studio / VS Code</span><span class="skill-pct">80%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
-    <section class="built-section dsa-section">
-    <h2 class="heading built-title">Data Structures & Algorithms</h2>
-    <p class="subdescription section-subtitle" style="text-align: center; margin-bottom: 40px;">
-        Practicing DSA to strengthen problem-solving fundamentals and logic.
-    </p>
+    <!-- ── DSA ─────────────────────────────────────────── -->
+    <section id="dsa">
+      <div class="sec-label reveal">Problem Solving</div>
+      <h2 class="sec-title reveal rd1">Data Structures & <em>Algorithms</em></h2>
 
-    <div class="built-grid dsa-grid">
-        <!-- Main Stats Card -->
-        <div class="built-card dsa-main-card">
-            <div class="dsa-total">
-                <div class="dsa-total-number pulse-effect">48</div>
-                <p class="subdescription" style="margin: 8px 0 0; font-size: 16px; font-weight: 500;">
-                    LeetCode Problems Solved
-                </p>
+      <div class="dsa-grid">
+        <div class="dsa-main-card reveal rd1">
+          <div class="dsa-big-num">48</div>
+          <div class="dsa-sub">LeetCode Problems Solved</div>
+          <div class="dsa-diff-bars">
+            <div class="diff-row">
+              <span class="diff-lbl">Easy</span>
+              <div class="diff-track"><div class="diff-bar diff-easy" data-w="75" data-n="36"></div></div>
             </div>
-
-            <div class="dsa-difficulty">
-                <div class="difficulty-item">
-                    <span class="difficulty-label">Easy</span>
-                    <div class="difficulty-bar easy"><span>36</span></div>
-                </div>
-                <div class="difficulty-item">
-                    <span class="difficulty-label">Medium</span>
-                    <div class="difficulty-bar medium"><span>10</span></div>
-                </div>
-                <div class="difficulty-item">
-                    <span class="difficulty-label">Hard</span>
-                    <div class="difficulty-bar hard"><span>2</span></div>
-                </div>
+            <div class="diff-row">
+              <span class="diff-lbl">Medium</span>
+              <div class="diff-track"><div class="diff-bar diff-medium" data-w="21" data-n="10"></div></div>
             </div>
+            <div class="diff-row">
+              <span class="diff-lbl">Hard</span>
+              <div class="diff-track"><div class="diff-bar diff-hard" data-w="4" data-n="2"></div></div>
+            </div>
+          </div>
         </div>
 
-        <!-- Topics Card -->
-        <div class="built-card dsa-topics-card wide">
-            <h3 class="subheading">Key Topics Practiced</h3>
-            <div class="topics-tags">
-                <span class="topic-tag">Arrays</span>
-                <span class="topic-tag">Strings</span>
-                <span class="topic-tag">HashMap</span>
-                <span class="topic-tag">Binary Search</span>
-                <span class="topic-tag">Sliding Window</span>
-                <span class="topic-tag">Trees</span>
-            </div>
+        <div class="dsa-topics-card reveal rd2">
+          <div class="sec-label">Topics Practiced</div>
+          <h3 style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;margin-bottom:8px;">Sharpening Core <em style="font-style:normal;color:var(--p3);">Fundamentals</em></h3>
+          <p style="font-family:var(--font-body);font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:var(--s24);">
+            Building algorithmic intuition through consistent problem-solving. Every challenge strengthens pattern recognition and systematic thinking under constraints.
+          </p>
+          <div class="topics-wrap">
+            <span class="topic-tag">Arrays</span>
+            <span class="topic-tag">Strings</span>
+            <span class="topic-tag">HashMap</span>
+            <span class="topic-tag">Binary Search</span>
+            <span class="topic-tag">Sliding Window</span>
+            <span class="topic-tag">Trees</span>
+            <span class="topic-tag">Two Pointers</span>
+            <span class="topic-tag">Recursion</span>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ── CAPABILITIES ────────────────────────────────── -->
+    <section id="work">
+      <div class="sec-label reveal">Capabilities</div>
+      <h2 class="sec-title reveal rd1">Built by One, <em>Engineered for All</em></h2>
+
+      <div class="built-grid">
+        <div class="card reveal rd1">
+          <div class="card-accent"></div>
+          <h3>Frontend Engineering</h3>
+          <p>Pixel-precise, responsive interfaces that blend elegant design with performance-focused execution. Every interaction crafted to feel natural and fast.</p>
+        </div>
+        <div class="card reveal rd2">
+          <div class="card-accent"></div>
+          <h3>Backend Architecture</h3>
+          <p>Robust server-side systems engineered for reliability and scale. Business logic designed for long-term maintainability and real-world performance.</p>
+        </div>
+        <div class="card reveal rd3">
+          <div class="card-accent"></div>
+          <h3>Database Design</h3>
+          <p>Efficient, secure schemas optimized for real-world access patterns. Data structured to serve fast, clean, and future-proof — relational or NoSQL.</p>
+        </div>
+        <div class="card reveal rd4">
+          <div class="card-accent"></div>
+          <h3>API Development</h3>
+          <p>Clean, versioned, well-documented APIs that connect systems with precision. Reliability baked in at every endpoint for a truly connected ecosystem.</p>
+        </div>
+        <div class="card built-wide reveal rd2">
+          <div class="card-accent"></div>
+          <h3>Research & Technical Analysis</h3>
+          <p>Deep evaluation of tools, frameworks, and architectural patterns before committing. Every technical decision is backed by evidence — not assumptions. From official documentation to real-world benchmarks, I choose what fits the problem, not what's trending.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EXPERIENCE ──────────────────────────────────── -->
+    <section id="experience">
+      <div class="sec-label reveal">Timeline</div>
+      <h2 class="sec-title reveal rd1">Where I've <em>Operated</em></h2>
+
+      <div class="exp-layout">
+        <div class="exp-side reveal rd1">
+          <div class="exp-company">CMOTS Infotech</div>
+          <div class="exp-role-txt">Software Development Engineer</div>
+          <div class="exp-date-txt">October 2024 — Present</div>
+          <div class="exp-date-txt" style="margin-top:4px;">Chennai, India</div>
+          <div class="exp-live-badge">Active Engagement</div>
+        </div>
+        <div class="exp-main reveal rd2">
+          <p class="exp-bullet">Architect and deliver secure, high-throughput APIs that bridge enterprise platforms with external financial systems — eliminating manual data pipelines entirely.</p>
+          <p class="exp-bullet">Integrate proprietary software with third-party financial services, automating data synchronization that accelerates operations and reduces error rates to near-zero.</p>
+          <p class="exp-bullet">Build and maintain cross-platform mobile applications using Xamarin.Forms and .NET MAUI — optimized for seamless, consistent performance on both Android and iOS.</p>
+          <p class="exp-bullet">Transform complex financial datasets into clean, interactive visualizations that enable stakeholders to make faster, more informed decisions at a glance.</p>
+          <p class="exp-bullet">Champion compliance and security standards across all delivered products, ensuring every feature ships with data protection and reliability at its core.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /page-wrap -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Sweathkumar<span>.</span></div>
+        <div class="footer-tagline">Software Development Engineer — Chennai, India</div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="footer-col-label">Navigate</span>
+          <a href="library.html">Projects</a>
+          <a href="#">Certificates</a>
+          <a href="#">Resume</a>
+          <a href="aboutme.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-label">Social</span>
+          <a href="https://www.instagram.com/Sweathkumar.g/" target="_blank">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/sweathkumar" target="_blank">LinkedIn</a>
+          <a href="https://github.com/sweathkumar" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-label">Products</span>
+          <a href="#">Mood-Play</a>
+          <a href="#">Smart CV</a>
+          <a href="#">AI Resume</a>
+          <a href="#">Build Labs</a>
+        </div>
+      </div>
     </div>
-</section>
+    <div class="footer-bottom">
+      <span>© 2025 Sweathkumar.com — All rights reserved</span>
+      <span>Contact: <a href="mailto:sweathkumarpersonal@gmail.com">sweathkumarpersonal@gmail.com</a></span>
+    </div>
+  </footer>
 
-    <section class="built-section">
-        <h2 class="heading built-title">Built by One, Engineered for All</h2>
-
-        <div class="built-grid">
-            <div class="built-card">
-                <h3 class="subheading">Frontend</h3>
-                <p class="subdescription">
-                    I build intuitive, modern, and responsive user interfaces that create smooth, engaging digital
-                    experiences.
-                    Every pixel and interaction is crafted to make users feel connected, confident, and in control —
-                    blending elegant design with performance-focused execution.
-                </p>
-            </div>
-
-            <div class="built-card">
-                <h3 class="subheading">Backend</h3>
-                <p class="subdescription">
-                    Behind every great app lies a powerful engine. I design and implement robust backend systems that
-                    ensure reliability, speed, and scalability.
-                    From business logic to data handling, my backend solutions keep everything running seamlessly under
-                    the hood.
-                </p>
-            </div>
-
-            <div class="built-card">
-                <h3 class="subheading">Database</h3>
-                <p class="subdescription">
-                    Data is the backbone of any application. I design efficient, secure, and well-structured databases
-                    that ensure fast access, integrity, and scalability.
-                    Whether it’s relational or NoSQL, I make data work smarter — optimized for real-world performance.
-                </p>
-            </div>
-
-            <div class="built-card">
-                <h3 class="subheading">APIs</h3>
-                <p class="subdescription">
-                    I develop clean, secure, and scalable APIs that connect systems effortlessly.
-                    Every endpoint is designed for clarity and reliability, enabling smooth communication between
-                    platforms, services, and devices for a truly connected digital ecosystem.
-                </p>
-            </div>
-
-            <div class="built-card wide">
-                <h3 class="subheading">Research & Analysis</h3>
-                <p class="subdescription">
-                    I excel at gathering insights from diverse and reliable sources — including official documentation,
-                    community discussions, blog posts, and real-world reviews.
-                    This helps me choose the best tools, frameworks, and solutions for every challenge, ensuring every
-                    project is built on knowledge and precision.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="built-section">
-        <h2 class="heading built-title">What I Do</h2>
-
-        <div class="built-grid row">
-            <div class="built-card">
-                <h3 class="subheading">Software Development Engineer - CMOTS Infotech - Chennai.</h3>
-                <p class="subdescription">October 2024 - Current</p>
-            </div>
-            <div class="built-card">
-                <p class="subdescription">
-                    I build safe, reliable, and fast systems that help different platforms and services work together
-                    smoothly. Every API I create is made to handle data clearly and quickly for better performance.</p>
-                <p class="subdescription">I connect company software with outside financial systems, making sure all
-                    data moves correctly and automatically between them. This helps business processes run faster and
-                    with fewer errors.</p>
-                <p class="subdescription">I also work on mobile apps using Xamarin and .NET MAUI, making sure they look
-                    good, run smoothly, and work well on both Android and iOS devices.</p>
-                <p class="subdescription">I create simple charts and reports that turn complex financial data into
-                    easy-to-understand visuals, helping users make better decisions.</p>
-                <p class="subdescription">I make sure every product I work on follows safety and privacy rules, keeping
-                    user data secure and the apps fully reliable for everyone who uses them.</p>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-wrapper">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <img src="./Resources/Images/Group 16.svg" alt="Logo" class="footer-logo">
-                    <label class="footer-name">Sweathkumar.com</label>
-                </div>
-
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <a href="./library.html" class="footer-link">Projects</a>
-                        <a href="#" class="footer-link">Certificates</a>
-                        <a href="#" class="footer-link">Resume</a>
-                        <a href="./aboutme.html" class="footer-link">About</a>
-                        <a href="./contact.html" class="footer-link">Contact</a>
-                    </div>
-
-                    <div class="footer-col">
-                        <a href="#" class="footer-link">Instagram</a>
-                        <a href="#" class="footer-link">Youtube</a>
-                        <a href="#" class="footer-link">LinkedIn</a>
-                        <a href="#" class="footer-link">Github</a>
-                    </div>
-
-                    <div class="footer-col">
-                        <a href="#" class="footer-link">Mood-Play</a>
-                        <a href="#" class="footer-link">Smart CV</a>
-                        <a href="#" class="footer-link">AI Resume Maker</a>
-                        <a href="#" class="footer-link">Build Labs</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="subdescription">
-                    Copyright © 2025 Sweathkumar.com. All rights reserved.
-                </p>
-                <p class="subdescription">
-                    For complaints and reports email :
-                    <a href="mailto:sweathkumarpersonal@gmail.com" class="footer-email">
-                        sweathkumarpersonal@gmail.com
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="./script.js"></script>
+  <script src="./script.js"></script>
 </body>
-
 </html>

@@ -1,178 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./Resources/Images/ico/favicon-light.svg" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="./Resources/Images/ico/favicon-dark.svg" media="(prefers-color-scheme: light)">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Sweathkumar</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <nav class="navbar ">
-        <div class="navContainer">
-            <img src="./Resources/Images/Group 16.svg" alt="logo">
-            <ul class="navlist">
-                <li><a href="./index.html" target="_self" class="navlist-text">Sweath</a></li>
-                <li><a href="#" class="navlist-text">Summary</a></li>
-                <li><a href="./library.html" class="navlist-text">Library</a></li>
-                <li><a href="./contact.html" class="navlist-text">Contact</a></li>
-            </ul>
-            <a href="https://www.instagram.com/Sweathkumar.g/"><img src="./Resources/Images/Vector.svg"
-                    alt="instagram"></a>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Sweathkumar<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="library.html">Library</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="aboutme.html" class="active">About</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Let's Talk</a>
+  </nav>
+
+  <div class="page-wrap">
+    <section class="about-hero container">
+      <div class="sec-label reveal">The Human Behind The Code</div>
+      <h1 class="sec-title reveal rd1" style="font-size:clamp(2.5rem,6vw,4.5rem);">
+        I Build Systems That <em>Last</em>
+      </h1>
+      <p class="reveal rd2" style="font-family:var(--font-body);font-size:1rem;color:var(--muted);line-height:1.8;max-width:640px;">
+        A production-first software engineer based in Chennai — driven by clarity, ownership, and a deep belief that good code should outlive the developer who wrote it.
+      </p>
+    </section>
+
+    <section style="padding-top:0;">
+      <div class="about-grid">
+
+        <!-- Overview — full width -->
+        <div class="card about-card-wide reveal rd1">
+          <div class="card-accent"></div>
+          <h3>Overview</h3>
+          <p>I'm a software engineer focused on building reliable, production-ready applications across web, mobile, and desktop platforms. My work centers on clarity, ownership, and consistent delivery. I'm most comfortable working close to real systems — where performance, stability, and correctness aren't optional. I take technical decisions seriously, because in production, every choice has consequences.</p>
         </div>
-    </nav>
 
-   <section class="built-section about-section">
-    <h2 class="heading built-title">About Me</h2>
-
-    <div class="about-row">
-        <!-- Overview -->
-        <div class="built-card about-card">
-            <h3 class="subheading">Overview</h3>
-            <p class="subdescription">
-                I am a software engineer focused on building reliable, production-ready applications across web, mobile, and desktop platforms. My work centers on clarity, ownership, and consistent delivery. I’m most comfortable working close to real systems—where performance, stability, and correctness matter.
-            </p>
-        </div>
-
-        <!-- My Engineering Journey -->
-        <div class="built-card about-card">
-            <h3 class="subheading">My Engineering Journey</h3>
-            <p class="subdescription">
-                My growth has been shaped primarily through hands-on production work. I’ve learned by building, fixing, refactoring, and maintaining real applications rather than relying only on theory or tutorials.
-            </p>
-            <p class="subdescription">
-                Over time, I’ve moved from understanding features in isolation to seeing complete system flows, including edge cases, failures, and long-term maintainability. This shift has strengthened both my technical depth and professional confidence.
-            </p>
+        <!-- Engineering Journey -->
+        <div class="card about-card-mid reveal rd1">
+          <div class="card-accent"></div>
+          <h3>My Engineering Journey</h3>
+          <p>My growth has been shaped primarily through hands-on production work. I've learned by building, fixing, refactoring, and maintaining real applications — not just following tutorials.</p>
+          <p style="margin-top:12px;">Over time, I've moved from understanding isolated features to seeing complete system flows — including edge cases, failure modes, and long-term maintainability. This shift has strengthened both my technical depth and my professional confidence.</p>
         </div>
 
         <!-- What I Work On -->
-        <div class="built-card about-card">
-            <h3 class="subheading">What I Work On</h3>
-            <p class="subdescription">
-                I work across multiple platforms and application types. This includes web applications built with .NET (C#), ASP.NET Web Apps, and Web APIs. On the frontend, I primarily use Angular, with React as a strong secondary skill.
-            </p>
-            <p class="subdescription">
-                For mobile development, I build cross-platform applications using Xamarin.Forms and .NET MAUI targeting both Android and iOS. I also develop desktop applications using WPF.
-            </p>
-            <p class="subdescription">
-                I regularly handle feature development, bug fixes, enhancements, and production issues across these systems.
-            </p>
+        <div class="card about-card-mid reveal rd2">
+          <div class="card-accent"></div>
+          <h3>What I Work On</h3>
+          <p>I work across multiple platforms: web applications built with .NET (C#), ASP.NET, and Web APIs. On the frontend, I primarily use Angular with React as a strong secondary skill.</p>
+          <p style="margin-top:12px;">For mobile, I build cross-platform applications using Xamarin.Forms and .NET MAUI targeting Android and iOS. I also develop desktop applications using WPF. I regularly handle feature development, bug fixes, and production issues across all of these systems.</p>
         </div>
 
-        <!-- My Technical Focus -->
-        <div class="built-card about-card">
-            <h3 class="subheading">My Technical Focus</h3>
-            <p class="subdescription">
-                I focus on building solutions that are clear and maintainable, stable in production, and easy to extend and debug. I follow structured patterns like MVVM, write clean and readable code, and prioritize correctness over shortcuts. I prefer simple, understandable solutions that can scale with real usage.
-            </p>
+        <!-- Technical Focus -->
+        <div class="card about-card-mid reveal rd3">
+          <div class="card-accent"></div>
+          <h3>My Technical Focus</h3>
+          <p>I focus on building solutions that are clear and maintainable, stable in production, and easy to extend and debug. I follow structured patterns like MVVM, write clean readable code, and prioritize correctness over shortcuts. Simple, understandable solutions that scale with real usage — always over clever hacks.</p>
         </div>
 
         <!-- Production Mindset -->
-        <div class="built-card about-card">
-            <h3 class="subheading">Production Mindset</h3>
-            <p class="subdescription">
-                I am comfortable working in live environments where issues affect real users. I approach production problems calmly and methodically, focusing on root cause rather than surface fixes.
-            </p>
-            <p class="subdescription">
-                My responsibilities often include investigating production issues, fixing regressions, ensuring stability after releases, and supporting ongoing feature improvements.
-            </p>
+        <div class="card about-card-mid reveal rd1">
+          <div class="card-accent"></div>
+          <h3>Production Mindset</h3>
+          <p>I'm comfortable working in live environments where issues affect real users. I approach production problems calmly and methodically — focusing on root cause rather than surface-level fixes. My responsibilities include investigating production issues, fixing regressions, ensuring post-release stability, and supporting ongoing improvements without introducing regressions.</p>
         </div>
 
-        <!-- Work Ethic & Ownership -->
-        <div class="built-card about-card">
-            <h3 class="subheading">Work Ethic & Ownership</h3>
-            <p class="subdescription">
-                I take end-to-end ownership of my work. When I start a task, I see it through—from understanding the requirement to final delivery and validation.
-            </p>
-            <p class="subdescription">
-                I value accountability, consistency, clear communication, and long-term impact over quick wins.
-            </p>
+        <!-- Work Ethic -->
+        <div class="card about-card-mid reveal rd2">
+          <div class="card-accent"></div>
+          <h3>Work Ethic & Ownership</h3>
+          <p>I take end-to-end ownership of my work. When I start a task, I see it through — from understanding the requirement to final delivery and validation. I value accountability, consistency, clear communication, and long-term impact over quick wins that create future technical debt.</p>
         </div>
 
         <!-- How I Approach Problems -->
-        <div class="built-card about-card">
-            <h3 class="subheading">How I Approach Problems</h3>
-            <p class="subdescription">
-                When faced with a problem, I first understand the requirement and constraints. I then break the problem into smaller parts and choose clarity over complexity. I handle edge cases deliberately and always test and validate before closing.
-            </p>
-            <p class="subdescription">
-                This structured approach helps me deliver stable solutions even under pressure.
-            </p>
+        <div class="card about-card-mid reveal rd3">
+          <div class="card-accent"></div>
+          <h3>How I Approach Problems</h3>
+          <p>First, understand the requirement and constraints. Then break the problem into smaller parts and choose clarity over complexity. Handle edge cases deliberately. Always test and validate before closing. This structured approach enables me to deliver stable solutions even under pressure — the kind that don't require revisits two weeks later.</p>
         </div>
 
         <!-- Continuous Improvement -->
-        <div class="built-card about-card">
-            <h3 class="subheading">Continuous Improvement</h3>
-            <p class="subdescription">
-                I continuously improve by learning from production feedback, reviewing past issues and fixes, adapting to new tools, SDKs, and frameworks, and strengthening fundamentals alongside practical work.
-            </p>
+        <div class="card about-card-mid reveal rd1">
+          <div class="card-accent"></div>
+          <h3>Continuous Improvement</h3>
+          <p>I grow by learning from production feedback, reviewing past issues and fixes, and adapting to new tools, SDKs, and frameworks as they mature. I pair practical work with deliberate study — strengthening fundamentals and staying current without chasing every new shiny framework that emerges.</p>
         </div>
 
         <!-- What Defines Me -->
-        <div class="built-card about-card">
-            <h3 class="subheading">What Defines Me as an Engineer</h3>
-            <p class="subdescription">
-                A production-first mindset. Calm under pressure. A strong sense of responsibility. A deep focus on clarity and maintainability. Consistent delivery.
-            </p>
+        <div class="card about-card-mid reveal rd2">
+          <div class="card-accent"></div>
+          <h3>What Defines Me as an Engineer</h3>
+          <p>A production-first mindset. Calm under pressure. A strong sense of responsibility. A deep focus on clarity and maintainability. Consistent, reliable delivery — sprint after sprint, feature after feature, incident after incident.</p>
         </div>
 
-        <!-- Closing Note -->
-        <div class="built-card about-card closing-note">
-            <h3 class="subheading">Closing Note</h3>
-            <p class="subdescription" style="font-style: italic; font-size: 18px; text-align: center; line-height: 1.8;">
-                I don’t aim to just write code.<br><br>
-                I aim to build systems that work, last, and can be trusted.
-            </p>
+        <!-- Closing -->
+        <div class="closing-card reveal rd1">
+          <div class="card-accent"></div>
+          <p class="closing-quote">
+            "I don't aim to just write code.<br />
+            I aim to build systems that <em>work, last,</em> and can be <em>trusted.</em>"
+          </p>
         </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Sweathkumar<span>.</span></div>
+        <div class="footer-tagline">Software Development Engineer — Chennai, India</div>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span class="footer-col-label">Navigate</span>
+          <a href="library.html">Projects</a>
+          <a href="#">Certificates</a>
+          <a href="#">Resume</a>
+          <a href="aboutme.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-label">Social</span>
+          <a href="https://www.instagram.com/Sweathkumar.g/" target="_blank">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/sweathkumar" target="_blank">LinkedIn</a>
+          <a href="https://github.com/sweathkumar" target="_blank">GitHub</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-label">Products</span>
+          <a href="#">Mood-Play</a>
+          <a href="#">Smart CV</a>
+          <a href="#">AI Resume</a>
+          <a href="#">Build Labs</a>
+        </div>
+      </div>
     </div>
-</section>
- <footer class="footer">
-        <div class="footer-wrapper">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <img src="./Resources/Images/Group 16.svg" alt="Logo" class="footer-logo">
-                    <label class="footer-name">Sweathkumar.com</label>
-                </div>
+    <div class="footer-bottom">
+      <span>© 2025 Sweathkumar.com — All rights reserved</span>
+      <span>Contact: <a href="mailto:sweathkumarpersonal@gmail.com">sweathkumarpersonal@gmail.com</a></span>
+    </div>
+  </footer>
 
-                <div class="footer-columns">
-                    <div class="footer-col">
-                        <a href="./library.html" class="footer-link">Projects</a>
-                        <a href="#" class="footer-link">Certificates</a>
-                        <a href="#" class="footer-link">Resume</a>
-                        <a href="./aboutme.html" class="footer-link">About</a>
-                        <a href="./contact.html" class="footer-link">Contact</a>
-                    </div>
-
-                    <div class="footer-col">
-                        <a href="#" class="footer-link">Instagram</a>
-                        <a href="#" class="footer-link">Youtube</a>
-                        <a href="#" class="footer-link">LinkedIn</a>
-                        <a href="#" class="footer-link">Github</a>
-                    </div>
-
-                    <div class="footer-col">
-                        <a href="#" class="footer-link">Mood-Play</a>
-                        <a href="#" class="footer-link">Smart CV</a>
-                        <a href="#" class="footer-link">AI Resume Maker</a>
-                        <a href="#" class="footer-link">Build Labs</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="subdescription">
-                    Copyright © 2025 Sweathkumar.com. All rights reserved.
-                </p>
-                <p class="subdescription">
-                    For complaints and reports email :
-                    <a href="mailto:sweathkumarpersonal@gmail.com" class="footer-email">
-                        sweathkumarpersonal@gmail.com
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
+  <script src="./script.js"></script>
 </body>
 </html>
