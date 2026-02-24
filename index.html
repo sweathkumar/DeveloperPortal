@@ -1,328 +1,725 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sweathkumar — Software Development Engineer</title>
-  <link rel="stylesheet" href="./style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sweath Kumar — SDE & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --sf: -apple-system,"SF Pro Display","SF Pro Text",BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  --mono:"DM Mono","SF Mono","Fira Code",monospace;
+  --bg:#080810;--bg1:#0e0e1a;--bg2:#13131f;--bg3:#1a1a28;
+  --surface:rgba(255,255,255,0.04);--surfaceH:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);--borderH:rgba(255,255,255,0.16);
+  --txt:#f0f0f5;--txt2:#9898b0;--txt3:#4e4e68;
+  --accent:#7c6af7;--accentL:#a99eff;--accentD:#5545e0;
+  --teal:#2dd4bf;--rose:#f472b6;
+  --nav-bg:rgba(8,8,16,0.72);
+  --card-glow:rgba(124,106,247,0.12);
+  --line-col:rgba(124,106,247,0.18);
+  --id-bg:linear-gradient(145deg,#13132a 0%,#1a1a40 50%,#0f2040 100%);
+  --id-border:rgba(124,106,247,0.4);
+}
+[data-theme="light"]{
+  --bg:#f6f6fc;--bg1:#eeeef8;--bg2:#e4e4f0;--bg3:#d8d8ec;
+  --surface:rgba(0,0,0,0.025);--surfaceH:rgba(0,0,0,0.05);
+  --border:rgba(0,0,0,0.07);--borderH:rgba(0,0,0,0.15);
+  --txt:#111118;--txt2:#55556e;--txt3:#9090aa;
+  --accent:#5a45e0;--accentL:#7c6af7;--accentD:#4433cc;
+  --teal:#0d9488;--rose:#db2777;
+  --nav-bg:rgba(246,246,252,0.78);
+  --card-glow:rgba(90,69,224,0.08);
+  --line-col:rgba(90,69,224,0.12);
+  --id-bg:linear-gradient(145deg,#dde 0%,#ccd 50%,#bbc 100%);
+  --id-border:rgba(90,69,224,0.35);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sf);background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.6;transition:background .4s,color .4s;}
+::selection{background:var(--accent);color:#fff;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+
+/* RISING LINES */
+.rl-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.rl{position:absolute;bottom:-5%;width:1px;background:linear-gradient(to top,transparent,var(--line-col),transparent);animation:rlrise linear infinite;border-radius:1px;will-change:transform;}
+@keyframes rlrise{0%{transform:translateY(0) scaleY(0);opacity:0;}8%{opacity:1;transform:translateY(0) scaleY(1);}92%{opacity:.5;}100%{transform:translateY(-110vh) scaleY(1);opacity:0;}}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;transition:background .4s;}
+.orb1{width:580px;height:580px;background:rgba(124,106,247,.09);top:-120px;left:-120px;animation:of 22s ease-in-out infinite alternate;}
+.orb2{width:380px;height:380px;background:rgba(45,212,191,.05);bottom:-80px;right:-80px;animation:of 28s ease-in-out infinite alternate-reverse;}
+@keyframes of{from{transform:translate(0,0);}to{transform:translate(50px,60px);}}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(18px,5vw,72px);
+  background:var(--nav-bg);
+  backdrop-filter:blur(22px) saturate(1.8);-webkit-backdrop-filter:blur(22px) saturate(1.8);
+  border-bottom:1px solid var(--border);
+  transition:background .35s,border-color .35s;
+}
+.logo{font-family:var(--sf);font-size:.93rem;font-weight:700;color:var(--txt);text-decoration:none;letter-spacing:-.02em;display:flex;align-items:center;gap:5px;}
+.logo .dot{color:var(--accent);}
+.logo .tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;color:var(--accentL);background:rgba(124,106,247,.12);border:1px solid rgba(124,106,247,.2);padding:2px 7px;border-radius:20px;}
+.nav-links{display:flex;list-style:none;gap:clamp(14px,2.5vw,34px);}
+.nav-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt2);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;height:1px;width:0;background:var(--accent);transition:width .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accentL);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.theme-btn{
+  width:36px;height:20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  position:relative;cursor:pointer;transition:background .3s;flex-shrink:0;
+  display:flex;align-items:center;
+}
+.theme-btn::after{content:'';position:absolute;left:3px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--accent);transition:left .3s;}
+[data-theme="light"] .theme-btn::after{left:calc(100% - 15px);background:var(--accentD);}
+.nav-cta{font-family:var(--mono);font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--accent);padding:8px 18px;border-radius:6px;text-decoration:none;transition:background .2s,transform .2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--accentL);transform:translateY(-1px);}
+@media(max-width:860px){.nav-links{display:none;}}
+
+/* PAGE WRAP */
+.page{position:relative;z-index:1;}
+.section{max-width:1080px;margin:0 auto;padding:clamp(56px,10vw,120px) clamp(18px,5vw,68px);}
+
+/* LABELS + TITLES */
+.sl{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.sl::before{content:'';width:18px;height:1px;background:var(--accent);}
+.sh{font-family:var(--sf);font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:clamp(28px,4vw,52px);}
+.sh em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.rev.in{opacity:1;transform:none;}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+
+/* ═══ HERO ═══ */
+.hero{min-height:100svh;padding-top:60px;display:flex;align-items:center;}
+.hero-inner{max-width:1080px;margin:0 auto;padding:clamp(36px,8vw,96px) clamp(18px,5vw,68px);display:flex;align-items:center;gap:clamp(32px,5vw,72px);flex-wrap:wrap;}
+.hero-text{flex:1;min-width:260px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accentL);border:1px solid rgba(124,106,247,.25);padding:5px 13px;border-radius:20px;background:rgba(124,106,247,.07);margin-bottom:clamp(16px,2.5vw,28px);animation:fi .8s ease both;}
+.bdot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:bk 2s ease infinite;}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.hero-h1{font-family:var(--sf);font-size:clamp(2.4rem,7.5vw,5.4rem);font-weight:800;letter-spacing:-.05em;line-height:.98;margin-bottom:clamp(14px,2vw,22px);animation:fi .8s .1s ease both;}
+.hero-h1 .gr{background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:clamp(.85rem,1.4vw,1rem);color:var(--txt2);line-height:1.82;max-width:480px;margin-bottom:clamp(22px,3vw,36px);animation:fi .8s .2s ease both;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;animation:fi .8s .3s ease both;}
+
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:11px 22px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap;}
+.btn-p{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgba(124,106,247,.3);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(124,106,247,.45);}
+.btn-g{background:var(--surface);color:var(--txt2);border:1px solid var(--border);}
+.btn-g:hover{border-color:var(--accent);color:var(--accentL);transform:translateY(-2px);}
+
+/* LANYARD + ID CARD */
+.hero-card{flex:0 0 auto;display:flex;justify-content:center;animation:fi .8s .35s ease both;}
+.lanyard{display:flex;flex-direction:column;align-items:center;}
+.l-string{width:2px;height:56px;background:linear-gradient(to bottom,transparent,var(--accent),var(--accentL));border-radius:1px;margin-bottom:-1px;}
+.l-clip{width:30px;height:12px;background:var(--bg3);border:1px solid var(--borderH);border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;}
+.l-clip::after{content:'';width:7px;height:3px;background:var(--txt3);border-radius:2px;}
+.id-card{
+  width:230px;background:var(--id-bg);
+  border:1px solid var(--id-border);border-radius:16px;
+  padding:22px 18px 18px;
+  box-shadow:0 24px 56px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+  animation:swing 5s ease-in-out infinite;transform-origin:top center;
+  transition:box-shadow .3s;
+}
+.id-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);border-radius:inherit;pointer-events:none;}
+@keyframes swing{0%,100%{transform:rotate(-1.2deg);}50%{transform:rotate(1.2deg);}}
+.id-card:hover{box-shadow:0 32px 72px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1);}
+.id-head{display:flex;flex-direction:column;align-items:center;margin-bottom:14px;}
+.id-av{width:68px;height:68px;border-radius:50%;border:2px solid var(--id-border);background:var(--bg3);overflow:hidden;margin-bottom:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.35);position:relative;}
+.id-av img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;border-radius:50%;}
+.id-av .ph{font-family:var(--sf);font-size:1.5rem;font-weight:700;color:var(--accentL);line-height:1;z-index:1;}
+.id-av label{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;opacity:0;transition:opacity .2s;cursor:pointer;z-index:2;}
+.id-av:hover label{opacity:1;}
+.id-name{font-family:var(--sf);font-size:.92rem;font-weight:700;color:#fff;letter-spacing:-.02em;text-align:center;}
+.id-role{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;color:var(--accentL);text-transform:uppercase;margin-top:2px;text-align:center;}
+.id-div{height:1px;background:var(--id-border);margin:10px 0;}
+.id-fields{display:flex;flex-direction:column;gap:7px;}
+.id-row{display:flex;justify-content:space-between;align-items:center;}
+.id-lbl{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.32);}
+.id-val{font-family:var(--sf);font-size:.68rem;font-weight:500;color:rgba(255,255,255,.78);}
+.id-barcode{margin-top:14px;display:flex;gap:1.5px;justify-content:center;align-items:flex-end;height:24px;}
+.id-barcode span{width:2px;border-radius:1px;background:rgba(255,255,255,.18);}
+.id-status{display:flex;align-items:center;gap:5px;margin-top:10px;justify-content:center;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;color:var(--teal);text-transform:uppercase;}
+.id-status::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);animation:bk 2s ease infinite;}
+
+/* ═══ STATS ═══ */
+.stats-grid{display:flex;flex-wrap:wrap;gap:2px;}
+.stat-card{flex:1 1 180px;background:var(--surface);border:1px solid var(--border);padding:clamp(22px,4vw,38px) clamp(18px,3vw,30px);position:relative;overflow:hidden;transition:background .3s,border-color .3s;}
+.stat-card:hover{background:var(--surfaceH);border-color:var(--borderH);}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--teal));transition:width 1.5s cubic-bezier(.22,1,.36,1);}
+.stat-card.cnt::after{width:100%;}
+.sn{font-family:var(--sf);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;letter-spacing:-.04em;color:var(--txt);line-height:1;margin-bottom:5px;}
+.sl2{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);}
+
+/* ═══ AI SECTION ═══ */
+.ai-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:clamp(24px,5vw,48px);position:relative;overflow:hidden;transition:border-color .3s;}
+.ai-block:hover{border-color:var(--borderH);}
+.ai-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--teal),transparent);opacity:.7;}
+.ai-top{display:flex;gap:clamp(20px,3vw,48px);flex-wrap:wrap;align-items:flex-start;margin-bottom:clamp(20px,3vw,36px);}
+.ai-icon{flex-shrink:0;width:52px;height:52px;background:linear-gradient(135deg,rgba(124,106,247,.18),rgba(45,212,191,.1));border:1px solid rgba(124,106,247,.25);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.ai-txt{flex:1;min-width:200px;}
+.ai-t{font-family:var(--sf);font-size:clamp(1rem,2vw,1.25rem);font-weight:700;letter-spacing:-.03em;color:var(--txt);margin-bottom:9px;}
+.ai-d{font-size:clamp(.83rem,1.3vw,.94rem);color:var(--txt2);line-height:1.82;}
+.ai-d strong{color:var(--accentL);font-weight:500;}
+.ai-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;}
+.pill{font-family:var(--mono);font-size:.59rem;letter-spacing:.07em;color:var(--accentL);background:rgba(124,106,247,.1);border:1px solid rgba(124,106,247,.2);padding:4px 11px;border-radius:20px;transition:background .2s;}
+.pill:hover{background:rgba(124,106,247,.18);}
+.ai-cards{display:flex;gap:10px;flex-wrap:wrap;}
+.ai-mc{flex:1 1 190px;background:var(--surfaceH);border:1px solid var(--border);border-radius:10px;padding:18px;transition:border-color .3s,transform .3s;}
+.ai-mc:hover{border-color:var(--borderH);transform:translateY(-2px);}
+.ai-mi{font-size:1.1rem;margin-bottom:8px;}
+.ai-mt{font-family:var(--sf);font-size:.85rem;font-weight:600;color:var(--txt);margin-bottom:5px;}
+.ai-md{font-size:.78rem;color:var(--txt2);line-height:1.72;}
+
+/* ═══ SKILLS ═══ */
+.skills-flex{display:flex;flex-wrap:wrap;gap:10px;}
+.sg{flex:1 1 260px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(18px,3vw,26px);transition:border-color .3s;}
+.sg:hover{border-color:var(--borderH);}
+.scat{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.sr{margin-bottom:13px;}.sr:last-child{margin-bottom:0;}
+.sm{display:flex;justify-content:space-between;margin-bottom:5px;}
+.sk{font-size:.82rem;font-weight:500;color:var(--txt);}
+.sp{font-family:var(--mono);font-size:.6rem;color:var(--txt3);}
+.st{height:2px;background:var(--border);border-radius:1px;overflow:hidden;}
+.sf{height:100%;width:0;border-radius:1px;background:linear-gradient(90deg,var(--accentD),var(--accent),var(--teal));transition:width 1.3s cubic-bezier(.22,1,.36,1);}
+
+/* ═══ CAPABILITIES ═══ */
+.caps-flex{display:flex;flex-wrap:wrap;gap:10px;}
+.cc{flex:1 1 210px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(18px,3vw,26px);transition:border-color .3s,transform .3s;}
+.cc:hover{border-color:var(--borderH);transform:translateY(-2px);}
+.cc.wide{flex:2 1 380px;}
+.ci{font-size:1.3rem;margin-bottom:12px;}
+.ct{font-family:var(--sf);font-size:.92rem;font-weight:600;color:var(--txt);margin-bottom:7px;letter-spacing:-.02em;}
+.cd{font-size:.8rem;color:var(--txt2);line-height:1.76;}
+
+/* ═══ DSA ═══ */
+.dsa-flex{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;}
+.dsa-l{flex:0 1 230px;min-width:200px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(22px,4vw,38px);text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.dsa-spin{position:absolute;inset:-1px;border-radius:inherit;background:conic-gradient(from 0deg,transparent 72%,var(--accent) 82%,var(--teal) 90%,transparent);animation:spin 3.5s linear infinite;z-index:0;}
+.dsa-ib{position:absolute;inset:1px;border-radius:9px;background:var(--bg1);z-index:0;}
+.dsa-l>*:not(.dsa-spin):not(.dsa-ib){position:relative;z-index:1;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.db{font-family:var(--sf);font-size:4.2rem;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ds{font-family:var(--mono);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txt3);margin-top:5px;}
+.dsa-bars{margin-top:22px;text-align:left;}
+.dr{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.dl{font-family:var(--mono);font-size:.58rem;color:var(--txt3);width:44px;text-align:right;}
+.dt{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.dbar{height:100%;width:0;border-radius:2px;transition:width 1.4s cubic-bezier(.22,1,.36,1);position:relative;}
+.dbar::after{content:attr(data-n);position:absolute;right:0;top:-15px;font-family:var(--mono);font-size:.54rem;color:var(--txt);}
+.de{background:#4ade80}.dm{background:#fbbf24}.dh{background:#f87171}
+.dsa-r{flex:1;min-width:240px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(22px,4vw,38px);}
+.topics{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+.topic{font-family:var(--mono);font-size:.63rem;letter-spacing:.06em;color:var(--txt2);border:1px solid var(--border);padding:6px 13px;border-radius:20px;transition:border-color .2s,color .2s,background .2s;cursor:default;}
+.topic:hover{border-color:var(--accent);color:var(--accentL);background:rgba(124,106,247,.07);}
+
+/* ═══ PROJECTS ═══ */
+.proj-flex{display:flex;flex-wrap:wrap;gap:2px;}
+.pc{flex:1 1 270px;background:var(--surface);border:1px solid var(--border);padding:clamp(18px,3vw,28px);position:relative;overflow:hidden;transition:border-color .3s,transform .3s,box-shadow .3s;}
+.pc::after{content:'';position:absolute;top:-60%;left:-80%;width:50%;height:220%;background:linear-gradient(105deg,transparent,rgba(124,106,247,.04),transparent);transform:skewX(-18deg);transition:left .6s;}
+.pc:hover{border-color:var(--borderH);transform:translateY(-4px);box-shadow:0 16px 36px var(--card-glow);}
+.pc:hover::after{left:130%;}
+.pnum{font-family:var(--mono);font-size:.56rem;color:rgba(124,106,247,.32);margin-bottom:10px;display:block;}
+.pcat{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accentL);background:rgba(124,106,247,.1);border:1px solid rgba(124,106,247,.16);padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:9px;}
+.pname{font-family:var(--sf);font-size:.93rem;font-weight:600;color:var(--txt);margin-bottom:7px;letter-spacing:-.02em;}
+.pdesc{font-size:.8rem;line-height:1.75;color:var(--txt2);margin-bottom:13px;}
+.pchips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px;}
+.chip{font-family:var(--mono);font-size:.56rem;letter-spacing:.05em;padding:3px 9px;border:1px solid var(--border);color:var(--txt3);border-radius:20px;}
+.plinks{display:flex;gap:13px;}
+.plink{font-family:var(--mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:color .2s;}
+.plink:hover{color:var(--teal);}
+
+/* ═══ EXPERIENCE ═══ */
+.exp-flex{display:flex;flex-wrap:wrap;gap:10px;}
+.el{flex:0 1 230px;min-width:210px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(22px,4vw,34px);}
+.er{flex:1;min-width:250px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:clamp(22px,4vw,34px);}
+.eco{font-family:var(--sf);font-size:1.15rem;font-weight:700;letter-spacing:-.03em;margin-bottom:5px;}
+.erole{font-family:var(--mono);font-size:.63rem;letter-spacing:.07em;color:var(--accent);margin-bottom:4px;}
+.edate{font-family:var(--mono);font-size:.6rem;color:var(--txt3);}
+.elive{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--mono);font-size:.58rem;color:var(--teal);letter-spacing:.08em;}
+.elive::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);animation:bk 1.8s ease infinite;}
+.ebul{font-size:.85rem;line-height:1.85;color:var(--txt2);padding-left:16px;position:relative;margin-bottom:13px;}
+.ebul::before{content:'›';position:absolute;left:0;color:var(--accent);font-size:.95rem;}
+
+/* ═══ ABOUT / ID CARD SECTION ═══ */
+.about-flex{display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:center;}
+.about-txt{flex:1;min-width:250px;}
+.about-card{flex:0 0 auto;display:flex;justify-content:center;}
+.about-p{font-size:clamp(.85rem,1.4vw,.97rem);color:var(--txt2);line-height:1.88;margin-bottom:16px;}
+.about-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--nav-bg);backdrop-filter:blur(22px) saturate(1.8);-webkit-backdrop-filter:blur(22px) saturate(1.8);border-top:1px solid var(--border);padding:clamp(36px,6vw,68px) clamp(18px,5vw,68px) clamp(20px,3vw,36px);}
+.fi{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;margin-bottom:36px;}
+.fb{font-family:var(--sf);font-size:.95rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px;}
+.fb span{color:var(--accent);}
+.ftag{font-family:var(--mono);font-size:.58rem;color:var(--txt3);letter-spacing:.06em;}
+.fcols{display:flex;gap:clamp(28px,4vw,52px);flex-wrap:wrap;}
+.fcol{display:flex;flex-direction:column;gap:8px;}
+.fclbl{font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;}
+.fcol a{font-family:var(--mono);font-size:.7rem;color:var(--txt3);text-decoration:none;transition:color .2s;}
+.fcol a:hover{color:var(--txt);}
+.fbot{max-width:1080px;margin:0 auto;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:7px;font-family:var(--mono);font-size:.58rem;color:var(--txt3);}
+.fbot a{color:var(--accentL);text-decoration:none;}
+
+@media(max-width:600px){
+  .dsa-l{flex:1 1 100%;}
+  .el{flex:1 1 100%;}
+  .cc.wide{flex:1 1 100%;}
+  .stat-card{flex:1 1 calc(50% - 2px);}
+  .hero-h1{font-size:clamp(2rem,9vw,3rem);}
+  .hero-card{display:none;}
+  .foot-cols{gap:20px;}
+}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="index.html">Sweathkumar<span class="dot">.</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="library.html">Library</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="aboutme.html">About</a></li>
-    </ul>
-    <a href="contact.html" class="nav-cta">Let's Talk</a>
-  </nav>
+<!-- RISING LINES BG -->
+<div class="rl-bg" id="rlBg"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-  <div class="page-wrap">
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="logo" href="#">Sweath Kumar<span class="dot">.</span><span class="tag">SDE</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#ai">AI</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#exp">Exp</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="theme-btn" id="themeBtn" role="button" aria-label="Toggle theme"></div>
+    <a href="mailto:sweathkumar@gmail.com" class="nav-cta">Contact</a>
+  </div>
+</nav>
 
-    <!-- ── HERO ──────────────────────────────────────── -->
-    <section class="hero container">
-      <div class="hero-content">
-        <div class="hero-badge">Open to Opportunities</div>
+<div class="page">
 
-        <h1 class="hero-title">
-          <span class="line"><span class="line-in">Crafting</span></span>
-          <span class="line"><span class="line-in gradient-text">Reliable</span></span>
-          <span class="line"><span class="line-in">Software.</span></span>
-        </h1>
-
-        <p class="hero-desc">
-          Software Development Engineer building production-grade systems across
-          .NET, mobile, and full-stack platforms. I turn complex requirements
-          into clean, scalable code that ships and lasts.
-        </p>
-
-        <div class="hero-actions">
-          <a href="library.html" class="btn btn-primary">View Projects</a>
-          <a href="aboutme.html" class="btn btn-ghost">About Me</a>
-        </div>
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="bdot"></span>Open to Opportunities · Chennai, India</div>
+      <h1 class="hero-h1">Software<br><span class="gr">Engineer</span><br>&amp; AI Thinker.</h1>
+      <p class="hero-sub">Associate SDE at CMOTS Internet Technologies — shipping cross-platform apps with .NET MAUI &amp; Xamarin, building robust APIs in ASP.NET, and growing deeper into how AI actually works.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-p">View Projects</a>
+        <a href="#about" class="btn btn-g">Who I Am</a>
       </div>
-
-      <div class="hero-visual">
-        <div class="code-card">
-          <div class="code-bar">
-            <span class="code-dot code-dot-r"></span>
-            <span class="code-dot code-dot-y"></span>
-            <span class="code-dot code-dot-g"></span>
-            <span class="code-fname">sweathkumar.cs</span>
-          </div>
-          <div class="code-body">
-            <span class="cl"><span class="cc">// Software Development Engineer</span></span>
-            <span class="cl"><span class="ck">public class</span> <span class="cf">Sweathkumar</span> {</span>
-            <span class="cl">&nbsp;&nbsp;<span class="ck">string</span> Role = <span class="cs">"SDE @ CMOTS Infotech"</span>;</span>
-            <span class="cl">&nbsp;&nbsp;<span class="ck">string</span> Location = <span class="cs">"Chennai, India"</span>;</span>
-            <span class="cl">&nbsp;&nbsp;<span class="ck">string[]</span> Stack = {</span>
-            <span class="cl">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">".NET"</span>, <span class="cs">"MAUI"</span>, <span class="cs">"Angular"</span>,</span>
-            <span class="cl">&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs">"Web API"</span>, <span class="cs">"Xamarin"</span></span>
-            <span class="cl">&nbsp;&nbsp;};</span>
-            <span class="cl">&nbsp;&nbsp;<span class="cn">133</span> Features <span class="cf">Delivered</span>();</span>
-            <span class="cl">&nbsp;&nbsp;<span class="ck">bool</span> Available = <span class="cf">true</span>;<span class="cursor-blink">█</span></span>
-            <span class="cl">}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── STATS ───────────────────────────────────────── -->
-    <section style="padding-top: 0;" id="stats">
-      <div class="sec-label reveal">Achievements</div>
-      <h2 class="sec-title reveal rd1">Metrics <em>That Matter</em></h2>
-
-      <div class="stats-strip">
-        <div class="stat-item reveal rd1">
-          <div class="stat-n" data-target="230">0</div>
-          <div class="stat-lbl">Tasks Completed</div>
-        </div>
-        <div class="stat-item reveal rd2">
-          <div class="stat-n" data-target="98.3" data-suffix="%">0</div>
-          <div class="stat-lbl">Completion Rate</div>
-        </div>
-        <div class="stat-item reveal rd3">
-          <div class="stat-n" data-target="15">0</div>
-          <div class="stat-lbl">Projects Shipped</div>
-        </div>
-        <div class="stat-item reveal rd4">
-          <div class="stat-n" data-target="133">0</div>
-          <div class="stat-lbl">Features Delivered</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SKILLS ──────────────────────────────────────── -->
-    <section id="skills">
-      <div class="sec-label reveal">Proficiency</div>
-      <h2 class="sec-title reveal rd1">Skills & <em>Arsenal</em></h2>
-
-      <div class="skills-grid">
-
-        <div class="skill-card reveal rd1">
-          <div class="skill-cat">Frontend</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Angular</span><span class="skill-pct">50%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="50"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">React</span><span class="skill-pct">30%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="30"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">HTML / CSS / TypeScript</span><span class="skill-pct">70%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-card reveal rd2">
-          <div class="skill-cat">Backend / Web</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">.NET (C#)</span><span class="skill-pct">90%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">ASP.NET Web App</span><span class="skill-pct">75%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Web API</span><span class="skill-pct">80%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-card reveal rd3">
-          <div class="skill-cat">Mobile</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Xamarin.Forms</span><span class="skill-pct">90%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">.NET MAUI</span><span class="skill-pct">88%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Android & iOS</span><span class="skill-pct">75%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-card reveal rd1">
-          <div class="skill-cat">Desktop</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">WPF</span><span class="skill-pct">70%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-card reveal rd2">
-          <div class="skill-cat">Architecture</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">MVVM</span><span class="skill-pct">80%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
-          </div>
-        </div>
-
-        <div class="skill-card reveal rd3">
-          <div class="skill-cat">Tools</div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Git</span><span class="skill-pct">75%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-meta"><span class="skill-name">Visual Studio / VS Code</span><span class="skill-pct">80%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── DSA ─────────────────────────────────────────── -->
-    <section id="dsa">
-      <div class="sec-label reveal">Problem Solving</div>
-      <h2 class="sec-title reveal rd1">Data Structures & <em>Algorithms</em></h2>
-
-      <div class="dsa-grid">
-        <div class="dsa-main-card reveal rd1">
-          <div class="dsa-big-num">48</div>
-          <div class="dsa-sub">LeetCode Problems Solved</div>
-          <div class="dsa-diff-bars">
-            <div class="diff-row">
-              <span class="diff-lbl">Easy</span>
-              <div class="diff-track"><div class="diff-bar diff-easy" data-w="75" data-n="36"></div></div>
+    </div>
+    <div class="hero-card">
+      <div class="lanyard">
+        <div class="l-string"></div>
+        <div class="l-clip"></div>
+        <div class="id-card" id="idCard1">
+          <div class="id-head">
+            <div class="id-av">
+              <!-- <div class="ph">SK</div> -->
+              <img id="av1" src="./Resources/Images/622077820_18189124702349632_8658362290146427850_n.jpg" alt=""/>
+              <label for="avInput1">📷 Change</label>
+              <input type="file" id="avInput1" accept="image/*" style="display:none"/>
             </div>
-            <div class="diff-row">
-              <span class="diff-lbl">Medium</span>
-              <div class="diff-track"><div class="diff-bar diff-medium" data-w="21" data-n="10"></div></div>
-            </div>
-            <div class="diff-row">
-              <span class="diff-lbl">Hard</span>
-              <div class="diff-track"><div class="diff-bar diff-hard" data-w="4" data-n="2"></div></div>
-            </div>
+            <div class="id-name">Sweath Kumar</div>
+            <div class="id-role">SDE · AI Enthusiast</div>
           </div>
-        </div>
-
-        <div class="dsa-topics-card reveal rd2">
-          <div class="sec-label">Topics Practiced</div>
-          <h3 style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;margin-bottom:8px;">Sharpening Core <em style="font-style:normal;color:var(--p3);">Fundamentals</em></h3>
-          <p style="font-family:var(--font-body);font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:var(--s24);">
-            Building algorithmic intuition through consistent problem-solving. Every challenge strengthens pattern recognition and systematic thinking under constraints.
-          </p>
-          <div class="topics-wrap">
-            <span class="topic-tag">Arrays</span>
-            <span class="topic-tag">Strings</span>
-            <span class="topic-tag">HashMap</span>
-            <span class="topic-tag">Binary Search</span>
-            <span class="topic-tag">Sliding Window</span>
-            <span class="topic-tag">Trees</span>
-            <span class="topic-tag">Two Pointers</span>
-            <span class="topic-tag">Recursion</span>
+          <div class="id-div"></div>
+          <div class="id-fields">
+            <div class="id-row"><span class="id-lbl">Company</span><span class="id-val">CMOTS Infotech</span></div>
+            <div class="id-row"><span class="id-lbl">Location</span><span class="id-val">Chennai, India</span></div>
+            <div class="id-row"><span class="id-lbl">Stack</span><span class="id-val">.NET · MAUI · Angular</span></div>
+            <div class="id-row"><span class="id-lbl">Degree</span><span class="id-val">B.Sc · Univ of Madras</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CAPABILITIES ────────────────────────────────── -->
-    <section id="work">
-      <div class="sec-label reveal">Capabilities</div>
-      <h2 class="sec-title reveal rd1">Built by One, <em>Engineered for All</em></h2>
-
-      <div class="built-grid">
-        <div class="card reveal rd1">
-          <div class="card-accent"></div>
-          <h3>Frontend Engineering</h3>
-          <p>Pixel-precise, responsive interfaces that blend elegant design with performance-focused execution. Every interaction crafted to feel natural and fast.</p>
-        </div>
-        <div class="card reveal rd2">
-          <div class="card-accent"></div>
-          <h3>Backend Architecture</h3>
-          <p>Robust server-side systems engineered for reliability and scale. Business logic designed for long-term maintainability and real-world performance.</p>
-        </div>
-        <div class="card reveal rd3">
-          <div class="card-accent"></div>
-          <h3>Database Design</h3>
-          <p>Efficient, secure schemas optimized for real-world access patterns. Data structured to serve fast, clean, and future-proof — relational or NoSQL.</p>
-        </div>
-        <div class="card reveal rd4">
-          <div class="card-accent"></div>
-          <h3>API Development</h3>
-          <p>Clean, versioned, well-documented APIs that connect systems with precision. Reliability baked in at every endpoint for a truly connected ecosystem.</p>
-        </div>
-        <div class="card built-wide reveal rd2">
-          <div class="card-accent"></div>
-          <h3>Research & Technical Analysis</h3>
-          <p>Deep evaluation of tools, frameworks, and architectural patterns before committing. Every technical decision is backed by evidence — not assumptions. From official documentation to real-world benchmarks, I choose what fits the problem, not what's trending.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── EXPERIENCE ──────────────────────────────────── -->
-    <section id="experience">
-      <div class="sec-label reveal">Timeline</div>
-      <h2 class="sec-title reveal rd1">Where I've <em>Operated</em></h2>
-
-      <div class="exp-layout">
-        <div class="exp-side reveal rd1">
-          <div class="exp-company">CMOTS Infotech</div>
-          <div class="exp-role-txt">Software Development Engineer</div>
-          <div class="exp-date-txt">October 2024 — Present</div>
-          <div class="exp-date-txt" style="margin-top:4px;">Chennai, India</div>
-          <div class="exp-live-badge">Active Engagement</div>
-        </div>
-        <div class="exp-main reveal rd2">
-          <p class="exp-bullet">Architect and deliver secure, high-throughput APIs that bridge enterprise platforms with external financial systems — eliminating manual data pipelines entirely.</p>
-          <p class="exp-bullet">Integrate proprietary software with third-party financial services, automating data synchronization that accelerates operations and reduces error rates to near-zero.</p>
-          <p class="exp-bullet">Build and maintain cross-platform mobile applications using Xamarin.Forms and .NET MAUI — optimized for seamless, consistent performance on both Android and iOS.</p>
-          <p class="exp-bullet">Transform complex financial datasets into clean, interactive visualizations that enable stakeholders to make faster, more informed decisions at a glance.</p>
-          <p class="exp-bullet">Champion compliance and security standards across all delivered products, ensuring every feature ships with data protection and reliability at its core.</p>
-        </div>
-      </div>
-    </section>
-
-  </div><!-- /page-wrap -->
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand-name">Sweathkumar<span>.</span></div>
-        <div class="footer-tagline">Software Development Engineer — Chennai, India</div>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <span class="footer-col-label">Navigate</span>
-          <a href="library.html">Projects</a>
-          <a href="#">Certificates</a>
-          <a href="#">Resume</a>
-          <a href="aboutme.html">About</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-label">Social</span>
-          <a href="https://www.instagram.com/Sweathkumar.g/" target="_blank">Instagram</a>
-          <a href="#">YouTube</a>
-          <a href="https://www.linkedin.com/in/sweathkumar" target="_blank">LinkedIn</a>
-          <a href="https://github.com/sweathkumar" target="_blank">GitHub</a>
-        </div>
-        <div class="footer-col">
-          <span class="footer-col-label">Products</span>
-          <a href="#">Mood-Play</a>
-          <a href="#">Smart CV</a>
-          <a href="#">AI Resume</a>
-          <a href="#">Build Labs</a>
+          <div class="id-barcode" id="bc1"></div>
+          <div class="id-status">Available for work</div>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 Sweathkumar.com — All rights reserved</span>
-      <span>Contact: <a href="mailto:sweathkumarpersonal@gmail.com">sweathkumarpersonal@gmail.com</a></span>
-    </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="./script.js"></script>
+<!-- ══ STATS ══ -->
+<div class="section" id="work">
+  <div class="sl rev">By the Numbers</div>
+  <h2 class="sh rev d1">Metrics <em>That Matter</em></h2>
+  <div class="stats-grid">
+    <div class="stat-card rev d1"><div class="sn" data-target="230">0</div><div class="sl2">Tasks Completed</div></div>
+    <div class="stat-card rev d2"><div class="sn" data-target="98.3" data-suffix="%">0</div><div class="sl2">Completion Rate</div></div>
+    <div class="stat-card rev d3"><div class="sn" data-target="133">0</div><div class="sl2">Features Delivered</div></div>
+    <div class="stat-card rev d4"><div class="sn" data-target="15">0</div><div class="sl2">Projects Shipped</div></div>
+  </div>
+</div>
+
+<!-- ══ AI ══ -->
+<div class="section" id="ai">
+  <div class="sl rev">AI-Oriented Engineering</div>
+  <h2 class="sh rev d1">I Know How to <em>Guide AI</em></h2>
+  <div class="ai-block rev d2">
+    <div class="ai-top">
+      <div class="ai-icon">🧠</div>
+      <div class="ai-txt">
+        <div class="ai-t">Prompt Engineering &amp; AI Understanding</div>
+        <div class="ai-d">
+          I've built a practical grasp of <strong>how large language models actually work</strong> — not just how to use them. Understanding tokenization, context windows, temperature, and sampling behaviour means I can <strong>design prompts that reliably get the right output</strong>, not just hope for it. I treat AI like any system with knowable internals — predictable when understood, powerful when guided well.
+        </div>
+        <div class="ai-pills">
+          <span class="pill">Prompt Engineering</span>
+          <span class="pill">Temperature &amp; Sampling</span>
+          <span class="pill">Context Windows</span>
+          <span class="pill">LLM Internals</span>
+          <span class="pill">Structured Output</span>
+          <span class="pill">AI Workflow Design</span>
+        </div>
+      </div>
+    </div>
+    <div class="ai-cards">
+      <div class="ai-mc">
+        <div class="ai-mi">⚙️</div>
+        <div class="ai-mt">Deliberate Prompting</div>
+        <div class="ai-md">I design prompts with clear roles, constraints, and examples — not freeform requests. Every parameter is intentional and tested.</div>
+      </div>
+      <div class="ai-mc">
+        <div class="ai-mi">🔬</div>
+        <div class="ai-mt">Understanding the Model</div>
+        <div class="ai-md">Knowing how models sample and hallucinate helps me build guardrails, validate outputs, and set realistic expectations.</div>
+      </div>
+      <div class="ai-mc">
+        <div class="ai-mi">🔗</div>
+        <div class="ai-mt">AI Into Real Software</div>
+        <div class="ai-md">I integrate AI outputs into .NET and web projects with structured parsing, fallback handling, and clean separation from core logic.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SKILLS ══ -->
+<div class="section" id="skills">
+  <div class="sl rev">Proficiency</div>
+  <h2 class="sh rev d1">Skills &amp; <em>Arsenal</em></h2>
+  <div class="skills-flex">
+    <div class="sg rev d1">
+      <div class="scat">Backend / .NET</div>
+      <div class="sr"><div class="sm"><span class="sk">.NET (C#)</span><span class="sp">90%</span></div><div class="st"><div class="sf" data-w="90"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">ASP.NET Web App</span><span class="sp">75%</span></div><div class="st"><div class="sf" data-w="75"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">Web API</span><span class="sp">80%</span></div><div class="st"><div class="sf" data-w="80"></div></div></div>
+    </div>
+    <div class="sg rev d2">
+      <div class="scat">Mobile</div>
+      <div class="sr"><div class="sm"><span class="sk">Xamarin.Forms</span><span class="sp">90%</span></div><div class="st"><div class="sf" data-w="90"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">.NET MAUI</span><span class="sp">88%</span></div><div class="st"><div class="sf" data-w="88"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">Android &amp; iOS</span><span class="sp">75%</span></div><div class="st"><div class="sf" data-w="75"></div></div></div>
+    </div>
+    <div class="sg rev d3">
+      <div class="scat">Frontend</div>
+      <div class="sr"><div class="sm"><span class="sk">Angular</span><span class="sp">50%</span></div><div class="st"><div class="sf" data-w="50"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">React</span><span class="sp">30%</span></div><div class="st"><div class="sf" data-w="30"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">HTML / CSS / TypeScript</span><span class="sp">70%</span></div><div class="st"><div class="sf" data-w="70"></div></div></div>
+    </div>
+    <div class="sg rev d1">
+      <div class="scat">Desktop &amp; Pattern</div>
+      <div class="sr"><div class="sm"><span class="sk">WPF</span><span class="sp">70%</span></div><div class="st"><div class="sf" data-w="70"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">MVVM Architecture</span><span class="sp">80%</span></div><div class="st"><div class="sf" data-w="80"></div></div></div>
+    </div>
+    <div class="sg rev d2">
+      <div class="scat">AI &amp; Tools</div>
+      <div class="sr"><div class="sm"><span class="sk">Prompt Engineering</span><span class="sp">85%</span></div><div class="st"><div class="sf" data-w="85"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">Git</span><span class="sp">75%</span></div><div class="st"><div class="sf" data-w="75"></div></div></div>
+      <div class="sr"><div class="sm"><span class="sk">Visual Studio / VS Code</span><span class="sp">80%</span></div><div class="st"><div class="sf" data-w="80"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CAPABILITIES ══ -->
+<div class="section">
+  <div class="sl rev">What I Build</div>
+  <h2 class="sh rev d1">Built by One, <em>Engineered for All</em></h2>
+  <div class="caps-flex">
+    <div class="cc rev d1"><div class="ci">📱</div><div class="ct">Cross-Platform Mobile</div><div class="cd">Production apps in .NET MAUI &amp; Xamarin.Forms — one codebase, Android and iOS both done right.</div></div>
+    <div class="cc rev d2"><div class="ci">⚡</div><div class="ct">Backend &amp; APIs</div><div class="cd">High-throughput ASP.NET Web APIs connecting enterprise platforms to financial data and third-party services.</div></div>
+    <div class="cc rev d3"><div class="ci">🖥️</div><div class="ct">Frontend Engineering</div><div class="cd">Responsive Angular interfaces with clean data binding and real-time amCharts visualization.</div></div>
+    <div class="cc rev d4"><div class="ci">🗄️</div><div class="ct">Desktop Apps</div><div class="cd">WPF applications following strict MVVM patterns — maintainable and built for long-term reliability.</div></div>
+    <div class="cc wide rev d2"><div class="ci">🤖</div><div class="ct">AI-Guided Development</div><div class="cd">I use AI as a precision instrument — not a magic box. Understanding how models reason lets me write better prompts, set correct expectations, and integrate AI outputs into production code with proper validation and fallback logic. The result is a reliable system component, not a wildcard.</div></div>
+  </div>
+</div>
+
+<!-- ══ DSA ══ -->
+<div class="section">
+  <div class="sl rev">Problem Solving</div>
+  <h2 class="sh rev d1">Data Structures &amp; <em>Algorithms</em></h2>
+  <div class="dsa-flex">
+    <div class="dsa-l rev d1">
+      <div class="dsa-spin"></div><div class="dsa-ib"></div>
+      <div class="db">48</div>
+      <div class="ds">LeetCode Solved</div>
+      <div class="dsa-bars">
+        <div class="dr"><span class="dl">Easy</span><div class="dt"><div class="dbar de" data-w="75" data-n="36"></div></div></div>
+        <div class="dr"><span class="dl">Medium</span><div class="dt"><div class="dbar dm" data-w="21" data-n="10"></div></div></div>
+        <div class="dr"><span class="dl">Hard</span><div class="dt"><div class="dbar dh" data-w="4" data-n="2"></div></div></div>
+      </div>
+    </div>
+    <div class="dsa-r rev d2">
+      <div class="sl" style="margin-bottom:7px;">Topics Practiced</div>
+      <p style="font-size:.83rem;color:var(--txt2);line-height:1.8;margin-bottom:0;">Following the NeetCode roadmap — building algorithmic intuition bit by bit. System design meets stack trace.</p>
+      <div class="topics">
+        <span class="topic">Arrays</span><span class="topic">Strings</span><span class="topic">HashMap</span>
+        <span class="topic">Binary Search</span><span class="topic">Sliding Window</span><span class="topic">Trees</span>
+        <span class="topic">Two Pointers</span><span class="topic">Recursion</span><span class="topic">Linked Lists</span>
+        <span class="topic">Stack / Queue</span><span class="topic">Dynamic Programming</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROJECTS ══ -->
+<div class="section" id="projects">
+  <div class="sl rev">Open Source</div>
+  <h2 class="sh rev d1">Projects <em>Library</em></h2>
+  <div class="proj-flex">
+    <div class="pc rev d1"><span class="pnum">01</span><span class="pcat">AI Tools</span><div class="pname">Smart CV</div><p class="pdesc">ATS-friendly resume builder — interactive React playground for creating professional CVs in minutes.</p><div class="pchips"><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">CSS</span></div><div class="plinks"><a href="https://github.com/sweathkumar/smart-cv" class="plink" target="_blank">GitHub ↗</a><a href="https://smart-cv-inky.vercel.app" class="plink" target="_blank">Live ↗</a></div></div>
+    <div class="pc rev d2"><span class="pnum">02</span><span class="pcat">AI Tools</span><div class="pname">AI Resume Maker</div><p class="pdesc">AI-powered app that transforms basic input into polished, recruiter-ready resumes automatically.</p><div class="pchips"><span class="chip">React</span><span class="chip">OpenAI API</span></div><div class="plinks"><a href="https://github.com/sweathkumar/ai-resume-app" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d3"><span class="pnum">03</span><span class="pcat">AI Integration</span><div class="pname">Open AI Proxy</div><p class="pdesc">Web app integrating OpenAI with structured prompt management and clean response parsing.</p><div class="pchips"><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span></div><div class="plinks"><a href="https://github.com/sweathkumar/open-ai-proxy" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d1"><span class="pnum">04</span><span class="pcat">.NET Mobile</span><div class="pname">.NET MAUI Templates</div><p class="pdesc">Cross-platform mobile templates demonstrating best practices for Android and iOS in .NET MAUI.</p><div class="pchips"><span class="chip">C#</span><span class="chip">.NET MAUI</span></div><div class="plinks"><a href="https://github.com/sweathkumar/maui_Templates" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d2"><span class="pnum">05</span><span class="pcat">Data Viz</span><div class="pname">amCharts Templates</div><p class="pdesc">Production-ready chart templates for financial data — line, bar, pie variants in amCharts.</p><div class="pchips"><span class="chip">JavaScript</span><span class="chip">amCharts</span></div><div class="plinks"><a href="https://github.com/sweathkumar/amChartTemplates" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d3"><span class="pnum">06</span><span class="pcat">.NET Web</span><div class="pname">CRUD Web Form</div><p class="pdesc">Full-stack ASP.NET form with CRUD operations, SQL Server backend, and Bootstrap UI.</p><div class="pchips"><span class="chip">C#</span><span class="chip">ASP.NET</span><span class="chip">SQL Server</span></div><div class="plinks"><a href="https://github.com/sweathkumar/Insert-Into-Table" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d1"><span class="pnum">07</span><span class="pcat">Fintech</span><div class="pname">Shelby Stocks Platform</div><p class="pdesc">Dark-themed mock investment platform with Demat onboarding and financial tools in vanilla JS.</p><div class="pchips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div><div class="plinks"><a href="https://github.com/sweathkumar/Shelby-Stocks-Investment-Platform" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d2"><span class="pnum">08</span><span class="pcat">Product</span><div class="pname">MoodPlay</div><p class="pdesc">Mood-driven music player recommending tracks based on emotional state — minimal, focused.</p><div class="pchips"><span class="chip">JavaScript</span></div><div class="plinks"><a href="https://github.com/sweathkumar/moodplay" class="plink" target="_blank">GitHub ↗</a></div></div>
+    <div class="pc rev d3"><span class="pnum">09</span><span class="pcat">Portfolio</span><div class="pname">projectBlack</div><p class="pdesc">Source of this portfolio — clean, intentional design built with pure HTML, CSS, and JS.</p><div class="pchips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div><div class="plinks"><a href="https://github.com/sweathkumar/projectBlack" class="plink" target="_blank">GitHub ↗</a></div></div>
+  </div>
+  <p class="rev" style="text-align:center;margin-top:36px;font-family:var(--mono);font-size:.7rem;color:var(--txt3);">More on <a href="https://github.com/sweathkumar" target="_blank" style="color:var(--accent);text-decoration:none;">github.com/sweathkumar ↗</a></p>
+</div>
+
+<!-- ══ EXPERIENCE ══ -->
+<div class="section" id="exp">
+  <div class="sl rev">Timeline</div>
+  <h2 class="sh rev d1">Where I've <em>Operated</em></h2>
+  <div class="exp-flex">
+    <div class="el rev d1">
+      <div class="eco">CMOTS Infotech</div>
+      <div class="erole">Associate SDE · MAUI Dev</div>
+      <div class="edate">Oct 2024 — Present · Chennai</div>
+      <div class="elive">Active</div>
+      <p style="font-size:.76rem;color:var(--txt3);line-height:1.7;margin-top:14px;font-family:var(--mono);">Promoted from Trainee. Cross-platform mobile specialist in fintech — 250–500 person firm.</p>
+    </div>
+    <div class="er rev d2">
+      <p class="ebul">Build and ship cross-platform apps with .NET MAUI and Xamarin.Forms — consistent, performant output on Android and iOS from a single codebase.</p>
+      <p class="ebul">Architect high-throughput Web APIs integrating enterprise platforms with third-party financial services — replacing manual sync pipelines entirely.</p>
+      <p class="ebul">Transform raw financial datasets into interactive visualizations using amCharts — enabling faster stakeholder decisions.</p>
+      <p class="ebul">Build and maintain ASP.NET web applications with strong MVVM architecture and clean API integration.</p>
+      <p class="ebul">Champion security and compliance — every feature ships with regression-tested stability and data protection built in.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="section" id="about">
+  <div class="sl rev">Identity</div>
+  <h2 class="sh rev d1">The Engineer <em>Behind the Code</em></h2>
+  <div class="about-flex">
+    <div class="about-txt rev d1">
+      <p class="about-p">I'm Sweath Kumar — an Associate Software Development Engineer based in Chennai, building cross-platform software that runs reliably in production. I hold a B.Sc from the University of Madras, and currently work at CMOTS Internet Technologies across mobile, backend, and frontend stacks.</p>
+      <p class="about-p">Beyond shipping code, I've been building up my understanding of how AI systems actually work — studying prompt behaviour, model limitations, and how to structure requests for reliable, predictable output. I treat AI like a system with known internals, not a black box to hope at.</p>
+      <p class="about-p">I grind NeetCode, take production ownership seriously, and believe the future belongs to engineers who can think clearly alongside AI — not just those who use it by accident.</p>
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/sweathkumar" target="_blank" class="btn btn-g" style="font-size:.63rem;">LinkedIn ↗</a>
+        <a href="https://github.com/sweathkumar" target="_blank" class="btn btn-g" style="font-size:.63rem;">GitHub ↗</a>
+        <a href="https://www.instagram.com/Sweathkumar.g/" target="_blank" class="btn btn-g" style="font-size:.63rem;">Instagram ↗</a>
+        <a href="mailto:sweathkumar@gmail.com" class="btn btn-p" style="font-size:.63rem;">Email Me</a>
+      </div>
+    </div>
+    <div class="about-card rev d2">
+      <div class="lanyard">
+        <div class="l-string" style="height:44px;"></div>
+        <div class="l-clip"></div>
+        <div class="id-card" id="idCard2" style="width:246px;animation-duration:6s;">
+          <div class="id-head">
+            <div class="id-av">
+              <!-- <div class="ph">SK</div> -->
+              <img id="av2" src="./Resources/Images/622077820_18189124702349632_8658362290146427850_n.jpg" alt=""/>
+              <label for="avInput2">📷</label>
+              <input type="file" id="avInput2" accept="image/*" style="display:none"/>
+            </div>
+            <div class="id-name">Sweath Kumar</div>
+            <div class="id-role">Building Future Software</div>
+          </div>
+          <div class="id-div"></div>
+          <div class="id-fields">
+            <div class="id-row"><span class="id-lbl">Degree</span><span class="id-val">B.Sc · Univ of Madras</span></div>
+            <div class="id-row"><span class="id-lbl">Focus</span><span class="id-val">Mobile · API · AI</span></div>
+            <div class="id-row"><span class="id-lbl">DSA</span><span class="id-val">NeetCode Roadmap</span></div>
+            <div class="id-row"><span class="id-lbl">Instagram</span><span class="id-val">@Sweathkumar.g</span></div>
+          </div>
+          <div class="id-barcode" id="bc2"></div>
+          <div class="id-status">Tech Explorer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div>
+      <div class="fb">Sweath Kumar<span>.</span></div>
+      <div class="ftag">Associate SDE · CMOTS Internet Technologies · Chennai, India</div>
+    </div>
+    <div class="fcols">
+      <div class="fcol">
+        <span class="fclbl">Navigate</span>
+        <a href="#work">Work</a><a href="#ai">AI</a><a href="#projects">Projects</a><a href="#exp">Experience</a><a href="#about">About</a>
+      </div>
+      <div class="fcol">
+        <span class="fclbl">Social</span>
+        <a href="https://www.linkedin.com/in/sweathkumar" target="_blank">LinkedIn</a>
+        <a href="https://github.com/sweathkumar" target="_blank">GitHub</a>
+        <a href="https://www.instagram.com/Sweathkumar.g/" target="_blank">Instagram</a>
+      </div>
+      <div class="fcol">
+        <span class="fclbl">Projects</span>
+        <a href="https://smart-cv-inky.vercel.app" target="_blank">Smart CV</a>
+        <a href="https://github.com/sweathkumar/moodplay" target="_blank">MoodPlay</a>
+        <a href="https://github.com/sweathkumar/ai-resume-app" target="_blank">AI Resume</a>
+      </div>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Sweath Kumar — All rights reserved</span>
+    <span>Built with code &amp; curiosity · Chennai, India</span>
+  </div>
+</footer>
+
+<script>
+/* RISING LINES */
+(function(){
+  const w=document.getElementById('rlBg');
+  const n=window.innerWidth<700?10:22;
+  for(let i=0;i<n;i++){
+    const l=document.createElement('div');
+    l.className='rl';
+    const left=2+Math.random()*96;
+    const h=50+Math.random()*180;
+    const dur=9+Math.random()*16;
+    const delay=Math.random()*-22;
+    const op=0.25+Math.random()*0.55;
+    l.style.cssText=`left:${left}%;height:${h}px;animation-duration:${dur}s;animation-delay:${delay}s;opacity:${op};`;
+    w.appendChild(l);
+  }
+})();
+
+/* THEME */
+const html=document.documentElement;
+const tb=document.getElementById('themeBtn');
+const saved=localStorage.getItem('sk-theme')||'dark';
+html.setAttribute('data-theme',saved);
+tb.addEventListener('click',()=>{
+  const n=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',n);
+  localStorage.setItem('sk-theme',n);
+});
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>ro.observe(el));
+
+/* STAT COUNTER */
+function cu(el){
+  if(el._d)return;el._d=true;
+  const t=parseFloat(el.dataset.target),sfx=el.dataset.suffix||'',isF=!Number.isInteger(t);
+  const dur=1800,s=performance.now();
+  (function tick(n){
+    const p=Math.min((n-s)/dur,1),e=1-Math.pow(1-p,4),v=t*e;
+    el.textContent=(isF?v.toFixed(1):Math.floor(v))+sfx;
+    if(p<1)requestAnimationFrame(tick);
+  })(performance.now());
+}
+new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const n=e.target.querySelector('[data-target]');if(n){cu(n);e.target.classList.add('cnt');}});},{threshold:.4}).observe.bind(new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const n=e.target.querySelector('[data-target]');if(n){cu(n);e.target.classList.add('cnt');}});},{threshold:.4}));
+
+// Simpler stat observer
+const so=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;const n=e.target.querySelector('[data-target]');if(n){cu(n);e.target.classList.add('cnt');}});},{threshold:.4});
+document.querySelectorAll('.stat-card').forEach(el=>so.observe(el));
+
+/* SKILL BARS */
+new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('[data-w]').forEach(b=>{if(!b._d){b._d=true;b.style.width=b.dataset.w+'%';}});});},{threshold:.2}).observe.bind(null);
+const skillO=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('[data-w]').forEach(b=>{if(!b._d){b._d=true;b.style.width=b.dataset.w+'%';}});});},{threshold:.2});
+document.querySelectorAll('.sg,.dsa-l,.ai-block').forEach(el=>skillO.observe(el));
+
+/* BARCODE */
+function makeBC(id){
+  const el=document.getElementById(id);if(!el)return;
+  for(let i=0;i<30;i++){const s=document.createElement('span');const h=7+Math.random()*17;s.style.cssText=`height:${h}px;opacity:${.1+Math.random()*.55};width:${Math.random()>.5?'2px':'1px'};border-radius:1px;display:inline-block;`;el.appendChild(s);}
+}
+makeBC('bc1');makeBC('bc2');
+
+/* AVATAR UPLOAD — sync both cards */
+function setupAv(inputId,imgId){
+  const inp=document.getElementById(inputId);if(!inp)return;
+  inp.addEventListener('change',e=>{
+    const f=e.target.files[0];if(!f)return;
+    const r=new FileReader();
+    r.onload=ev=>{
+      document.querySelectorAll('.id-av img').forEach(i=>{i.src=ev.target.result;i.style.display='block';i.style.position='absolute';i.style.inset='0';i.style.borderRadius='50%';});
+      document.querySelectorAll('.id-av .ph').forEach(p=>p.style.display='none');
+    };
+    r.readAsDataURL(f);
+  });
+}
+setupAv('avInput1','av1');setupAv('avInput2','av2');
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+/* CARD SHINE — desktop only */
+if(window.innerWidth>860){
+  document.querySelectorAll('.pc,.cc,.ai-mc,.sg,.stat-card').forEach(c=>{
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=((e.clientX-r.left)/r.width)*100;const y=((e.clientY-r.top)/r.height)*100;c.style.background=`radial-gradient(circle at ${x}% ${y}%,var(--surfaceH) 0%,var(--surface) 65%)`;});
+    c.addEventListener('mouseleave',()=>{c.style.background='';});
+  });
+
+  /* ID CARD TILT — desktop only */
+  document.querySelectorAll('.id-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const dx=(e.clientX-r.left-r.width/2)/(r.width/2);
+      const dy=(e.clientY-r.top-r.height/2)/(r.height/2);
+      card.style.transform=`perspective(700px) rotateY(${dx*10}deg) rotateX(${-dy*8}deg)`;
+      card.style.animation='none';card.style.transition='transform .08s ease-out';
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='';card.style.animation='';});
+  });
+}
+
+/* NAV ACTIVE LINKS */
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const nav=document.getElementById('mainNav');
+  if(sy>60){nav.style.background=html.getAttribute('data-theme')==='light'?'rgba(246,246,252,.92)':'rgba(8,8,16,.92)';}
+  else{nav.style.background='';}
+  ['work','ai','skills','projects','exp','about'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    const rect=el.getBoundingClientRect();
+    const link=document.querySelector(`.nav-links a[href="#${id}"]`);
+    if(link){link.classList.toggle('active',rect.top<=90&&rect.bottom>=90);}
+  });
+},{passive:true});
+
+/* STAGGER CARD ENTER */
+new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.pc,.cc,.ai-mc,.sg,.stat-card').forEach((c,i)=>{c.style.transitionDelay=`${.06*i}s`;});});},{threshold:.04}).observe(document.body);
+</script>
 </body>
 </html>
